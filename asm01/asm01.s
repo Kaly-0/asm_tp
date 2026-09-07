@@ -2,7 +2,7 @@ global _start
 
 section .data
 
-msg db "49", "51", "51", "55", 0
+msg db "49", "51", "51", "55", 10
 
 section .text
 _start:
