@@ -1,8 +1,7 @@
 global _start
 
 section .data
-
-msg db "1337", 10
+    msg db "1337", 10
 
 section .text
 _start:
