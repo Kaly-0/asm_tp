@@ -13,29 +13,23 @@ _start:
     pop rax
     pop rax
 
-    mov rax, 0
-    mov rdi, 0
-    mov rsi, input
-    mov rdx, 256
-    syscall
+    mov rsi, rax
 
-    cmp byte [input], 0x34
+    cmp byte [rsi], 0x34
     jne _error
 
-    cmp byte [input +1], 0x32
+    cmp byte [rsi +1], 0x32
     jne _error
+
+
+
+_succes:
 
     mov rax, 1
     mov rdi, 1
     mov rsi, msg
     mov rdx, 5
     syscall
-
-    je _succes
-
-
-
-_succes:
 
     mov rax, 60
     mov rdi, 0
