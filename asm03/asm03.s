@@ -21,7 +21,8 @@ _start:
     cmp byte [rsi +1], 0x32
     jne _error
 
-
+    cmp byte [rsi +2], 0x0A
+    jne _error
 
 _succes:
 
