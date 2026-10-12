@@ -17,6 +17,10 @@ _start:
 	jl _nonumber
 	cmp al, '9'
 	jg _nonumber
+	and al, 1
+	cmp al, 0
+	je _even
+	jmp _odd
 
 
 _odd:
