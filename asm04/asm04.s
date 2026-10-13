@@ -20,7 +20,7 @@ _start:
 	inc rcx
 
 .tiret:
-	mov al, byte [input]
+	mov al, byte [rcx]
 	cmp al, '0'
 	jl _nonumber
 	cmp al, '9'
