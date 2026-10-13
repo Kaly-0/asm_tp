@@ -25,6 +25,7 @@ _start:
 	jmp _odd
 
 
+
 _odd:
 	mov rax, 60
 	mov rdi, 1
