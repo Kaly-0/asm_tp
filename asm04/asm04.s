@@ -1,9 +1,10 @@
 global _start
 
+
 section .bss
 	input resb 32
 
-section .text:
+section .text
 _start:
 
 	mov rax, 0
