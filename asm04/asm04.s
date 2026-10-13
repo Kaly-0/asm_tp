@@ -12,7 +12,14 @@ _start:
 	mov rsi, input
 	mov rdx, 32 
 	syscall
-	
+
+	mov rcx, input
+	mov al, byte [rcx]
+	cmp al, '-'
+	jne .tiret
+	inc rcx
+
+.tiret:
 	mov al, byte [input]
 	cmp al, '0'
 	jl _nonumber
@@ -24,8 +31,7 @@ _start:
 	je _even
 	jmp _odd
 
-
-
+	
 _odd:
 	mov rax, 60
 	mov rdi, 1
