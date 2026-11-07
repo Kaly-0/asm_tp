@@ -26,5 +26,5 @@ _start:
 
 _error:
 	mov rax, 60
-	mov rdi, 1
+	mov rdi, 2
 	syscall
