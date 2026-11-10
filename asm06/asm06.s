@@ -66,9 +66,36 @@ _start:
 
 .finish2:
 	add rax, rbx
-	mov rdi, rax
-	mov rax, 60
-	syscall
+	mov rdi, buffer_end
+	mov byte [rdi], 10
+	mov rbx, 10
+
+.convert_loop:
+        dec rdi
+        xor rdx, rdx
+        div rbx
+        add dl, '0'
+        mov [rdi], dl
+        test rax, rax
+        jnz .convert_loop
+
+
+        mov rax, 1
+        mov rsi, rdi
+        mov rdi, 1
+        mov rdx, buffer_end
+        sub rdx, rsi
+        inc rdx
+        syscall
+
+
+        mov rax, 60
+        xor rdi, rdi
+        syscall
+
+section .bss
+        buffer resb 32
+        buffer_end:
 
 	
 _error1:
