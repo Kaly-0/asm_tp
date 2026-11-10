@@ -2,9 +2,15 @@ global _start
 
 section .text
 _start:
-	cmp qword [rsp], 3
-	jne _error2
+	mov rbp, [rsp]
 
+	cmp rbp, 3
+	je .three_args
+	cmp rbp, 4
+	je .four_args
+	jmp _error2
+
+.next:
 	mov rsi, [rsp + 16]
 	mov rax, 0
 	mov rdx, 0
@@ -12,6 +18,21 @@ _start:
 	jne .loop
 	mov rdx, 1
 	add rsi, 1
+
+
+.three_args:
+	mov r8, [rsp + 24]
+
+.four_args:
+	mov rsi [rsp + 24]
+	cmp byte [rsi], '+' 
+	jne _error2
+	cmp byte [rsi + 1], 0
+	jne _error2
+
+	mov r8, [rsp + 32]
+	jmp .next
+
 
 .loop:
 	mov rcx, 0
@@ -28,7 +49,8 @@ _start:
 .finish:
 	mov rbx, rax
 	mov rax, 0
-	mov rsi, [rsp + 24]
+	mov rsi, r8
+
 
 .loop2:
 	mov rcx, 0
