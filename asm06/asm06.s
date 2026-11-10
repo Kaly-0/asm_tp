@@ -10,6 +10,20 @@ _start:
 	je .four_args
 	jmp _error2
 
+
+.four_args:
+	mov rsi, [rsp + 24]
+	cmp byte [rsi], '+' 
+	jne _error2
+	cmp byte [rsi + 1], 0
+	jne _error2
+
+	mov r8, [rsp + 32]
+	jmp .next
+
+.three_args:
+	mov r8, [rsp + 24]
+
 .next:
 	mov rsi, [rsp + 16]
 	mov rax, 0
@@ -18,20 +32,6 @@ _start:
 	jne .loop
 	mov rdx, 1
 	add rsi, 1
-
-
-.three_args:
-	mov r8, [rsp + 24]
-
-.four_args:
-	mov rsi [rsp + 24]
-	cmp byte [rsi], '+' 
-	jne _error2
-	cmp byte [rsi + 1], 0
-	jne _error2
-
-	mov r8, [rsp + 32]
-	jmp .next
 
 
 .loop:
