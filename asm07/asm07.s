@@ -18,9 +18,13 @@ _start:
 
 	mov r8, 0
 	cmp byte [rsi], '-' 
-	jne .loop
+	jne .go_start
 	mov r8, 1
 	add rsi, 1
+
+.go_start:
+	mov rax, 0
+	mov r9, 0
 	
 		
 .loop:
@@ -39,12 +43,16 @@ _start:
 	sub rcx, '0'
         imul rax, rax, 10
         add rax, rcx
+	add r9, 1
         add rsi, 1
         jmp .loop
 
 
 .check_if_empty:
-	cmp r9, 1
+	cmp r9, 0
+	je _error2
+	
+	cmp r8, 1
 	je _error1
 	
 	cmp rax, 2
