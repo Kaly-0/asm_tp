@@ -101,20 +101,20 @@ _start:
         mov rdi, 1
         mov rdx, output + 32
         sub rdx, rsi
-        syscall
-
+	syscall
+	jmp _works
 
 _works:
 	mov rax, 60
-	mov rsi, 00
+	mov rdi, 0
 	syscall
 
 _error1:
 	mov rax, 60
-	mov rsi, 1
+	mov rdi, 1
 	syscall
 
 _error2:
 	mov rax, 60
-	mov rsi, 2
+	mov rdi, 2
 	syscall
