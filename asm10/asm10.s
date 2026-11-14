@@ -38,7 +38,7 @@ _start:
         jl _error1
         cmp cl, '9'
         jg _error1
-        sub rcx, '0'
+        sub rcx, '0' 
         mul r11
         jc _error1
         add rax, rcx
