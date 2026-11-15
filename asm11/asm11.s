@@ -4,7 +4,7 @@ section .data
         vowels db "aeiouAEIOU", 0
 
 section .bss 
-	input resb 32
+	output resb 32
 
 section .text
 _start:
@@ -27,7 +27,7 @@ _start:
 	cmp cl, dl
 	je .found
 	add rdi, 1
-	jmp .chech_vowel
+	jmp .check_vowel
 
 .found:
 	add r8, 1
