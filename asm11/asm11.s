@@ -5,20 +5,32 @@ section .data
 
 section .bss 
 	output resb 32
+	input resb 4096 
 
 section .text
 _start:
 	mov rbp, [rsp]
-	cmp rbp, 2
+	cmp rbp, 1
 	jne _error2
-	mov rsi, [rsp + 16]
 	mov r8, 0
 
+.read:
+        mov rax, 0
+        mov rdi, 0
+        mov rsi, input
+        mov rdx, 4096
+        syscall
+        cmp rax, 0
+        jl _error1
+        je .prepare_print
+        mov r9, rax
+        mov rsi, input
+
 .loop:
-	mov cl, [rsi]
-	cmp cl, 0
-	je .prepare_print
-	mov rdi, vowels
+	cmp r9, 0
+        je .read
+        mov cl, byte [rsi]
+        mov rdi, vowels
 
 .check_vowel:
 	mov dl, byte [rdi]
@@ -34,6 +46,7 @@ _start:
 	
 .next_char:
 	add rsi, 1
+	sub r9, 1
 	jmp .loop
 
 .prepare_print:
