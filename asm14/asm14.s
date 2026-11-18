@@ -15,7 +15,7 @@ _start:
 .open:
         mov rax, 257
         mov rdi, -100
-        mov rdx, 64 + 1 + 512
+        mov rdx, 64 + 1 + 512 
         mov r10, 0644o
         syscall
         cmp rax, 0
