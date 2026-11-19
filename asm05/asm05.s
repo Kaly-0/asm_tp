@@ -23,8 +23,6 @@ _start:
 	mov rax, 1
 	mov rdi, 1
 	syscall
-
-_works:
 	mov rax, 60
 	mov rdi, 0
 	syscall
