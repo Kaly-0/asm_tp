@@ -1,10 +1,9 @@
 global _start
 
-section .text
-
 section .data
 	newline db 10
 
+section .text
 _start:
 
 	cmp qword [rsp], 2
