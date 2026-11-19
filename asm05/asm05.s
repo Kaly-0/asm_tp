@@ -1,6 +1,10 @@
 global _start
 
 section .text
+
+section .data
+	newline db 10
+
 _start:
 
 	cmp qword [rsp], 2
@@ -19,6 +23,8 @@ _start:
 	mov rax, 1
 	mov rdi, 1
 	syscall
+
+_works:
 	mov rax, 60
 	mov rdi, 0
 	syscall
